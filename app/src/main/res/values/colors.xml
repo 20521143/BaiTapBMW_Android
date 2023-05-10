@@ -11,5 +11,11 @@
     <color name="pink">#FF6969</color>
     <color name="brown">#A2A378</color>
     <color name="blue">#6C9BCF</color>
+<<<<<<< HEAD
     <color name="green">#5D9C59</color>
+=======
+    <color name="green">#7AA874</color>
+    <color name="yellow">#F7DB6A</color>
+    <color name="orange">#E08E6D</color>
+>>>>>>> 9f61c99e9434468b516d7900b2ff1172aa612bd9
 </resources>
