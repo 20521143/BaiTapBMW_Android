@@ -57,6 +57,7 @@
             android:background="@color/white"
             android:textColor="@color/black"
             android:hint="@string/pass"
+            android:password="true"
             android:textColorHint="@color/black"
             android:padding="10dp"
             android:layout_margin="10dp"
