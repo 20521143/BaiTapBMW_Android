@@ -1,3 +1,11 @@
 <resources>
+    <string name="SIGNUP">SIGN UP</string>
     <string name="app_name">BaiTapAdroid</string>
+    <string name="username">Username</string>
+    <string name="pass">Password</string>
+    <string name="signup">Sign up</string>
+    <string name="cancel">Cancel</string>
+    <string name="email">Email</string>
+    <string name="LOGIN" />
+    <string name="login" />
 </resources>

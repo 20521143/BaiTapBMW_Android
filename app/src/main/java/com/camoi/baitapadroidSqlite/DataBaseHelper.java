@@ -37,7 +37,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         ContentValues cv =new ContentValues();
         cv.put(COLUMN_USER_NAME, userModel.getUsername());
         cv.put(COLUMN_USER_EMAIL, userModel.getEmail());
-        cv.put(COLUMN_USER_PASSWORD, userModel.getPassword());
+        //shave password in hash function SHA256
+        cv.put(COLUMN_USER_PASSWORD, PasswordEncoder.encode(userModel.getPassword()));
 
         long insert = db.insert(USER_TABLE, null, cv);
 
@@ -47,7 +48,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         else {
             return true;
         }
-
 
     }
 }
