@@ -1,21 +1,14 @@
 <resources>
     <string name="SIGNUP">SIGN UP</string>
     <string name="app_name">BaiTapAdroid</string>
-<<<<<<< HEAD
-=======
-
-    <string name="SIGNUP">SIGN UP</string>
->>>>>>> 9f61c99e9434468b516d7900b2ff1172aa612bd9
     <string name="username">Username</string>
     <string name="pass">Password</string>
     <string name="signup">Sign up</string>
     <string name="cancel">Cancel</string>
     <string name="email">Email</string>
-<<<<<<< HEAD
-    <string name="LOGIN" />
-    <string name="login" />
-=======
+
     <string name="LOGIN">LOG IN</string>
     <string name="login"> Log in</string>
->>>>>>> 9f61c99e9434468b516d7900b2ff1172aa612bd9
+    <string name="hello">Hello! Welcome to Ca Moi App.....</string>
+
 </resources>
