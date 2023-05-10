@@ -10,5 +10,6 @@
     <string name="LOGIN">LOG IN</string>
     <string name="login"> Log in</string>
     <string name="hello">Hello! Welcome to Ca Moi App.....</string>
+    <string name="logout">Log out</string>
 
 </resources>

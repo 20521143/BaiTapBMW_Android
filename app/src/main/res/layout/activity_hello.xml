@@ -6,7 +6,22 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:background="@color/pink">
-<TextView
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/purple_200"
+        android:text="@string/logout"
+        android:textSize="18sp"></Button>
+
+    <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/hello"
