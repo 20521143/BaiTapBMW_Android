@@ -2,6 +2,7 @@ package com.camoi.baitapadroidSqlite;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -21,7 +22,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     //this method is the first time to be access. Need to have code here to create a new database
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableStatement = "CREATE TABLE " + USER_TABLE + " ( " + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_USER_NAME + " TEXT, " + COLUMN_USER_PASSWORD + " TEXT, " + COLUMN_USER_EMAIL + " TEXT)";
+        String createTableStatement = "CREATE TABLE " + USER_TABLE + " ( " + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_USER_NAME + " TEXT, " + COLUMN_USER_PASSWORD + " TEXT, " + COLUMN_USER_EMAIL + " TEXT )";
         db.execSQL(createTableStatement);
     }
 
@@ -36,9 +37,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db =this.getWritableDatabase();
         ContentValues cv =new ContentValues();
         cv.put(COLUMN_USER_NAME, userModel.getUsername());
+        cv.put(COLUMN_USER_PASSWORD, userModel.getPassword());
         cv.put(COLUMN_USER_EMAIL, userModel.getEmail());
         //shave password in hash function SHA256
-        cv.put(COLUMN_USER_PASSWORD, PasswordEncoder.encode(userModel.getPassword()));
 
         long insert = db.insert(USER_TABLE, null, cv);
 
@@ -48,6 +49,38 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         else {
             return true;
         }
+
+    }
+
+    //login function
+    public UserModel getUser(String username, String password) {
+
+        String queryString = "SELECT * FROM " + USER_TABLE + " WHERE " + COLUMN_USER_NAME + " = " + username + " AND " + COLUMN_USER_PASSWORD + " = " + password;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(queryString, null);
+        UserModel user;
+
+        if(cursor.moveToFirst()) {
+            int userID = cursor.getInt(0);
+            String userName = cursor.getString(1);
+            String userEmail = cursor.getString(3);
+
+            user = new UserModel(userID, userName, "1", userEmail );
+
+
+        }
+        else {
+            //don no thing
+            cursor.close();
+            db.close();
+            return null;
+        }
+
+        cursor.close();
+        db.close();
+        return user;
+
 
     }
 }

@@ -2,6 +2,7 @@ package com.camoi.baitapadroidSqlite;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -15,14 +16,17 @@ public class MainActivity extends AppCompatActivity {
 
     //reference to button and other controls on the layout
 
-    Button btn_signUp, btn_cancel;
+    Button btn_signUp, btn_cancel, btn_test;
     EditText et_userName, et_mail, et_passWord;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         btn_signUp = findViewById(R.id.btn_signUp);
         btn_cancel = findViewById(R.id.btn_cancel);
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             UserModel userModel;
             @Override
             public void onClick(View v) {
+
                 try {
                     userModel = new UserModel(-1, et_userName.getText().toString(), et_passWord.getText().toString(), et_mail.getText().toString());
                     Toast.makeText(MainActivity.this, userModel.toString(), Toast.LENGTH_SHORT).show();
@@ -48,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
                 DataBaseHelper dataBaseHelper = new DataBaseHelper(MainActivity.this);
 
                 boolean success = dataBaseHelper.addOne(userModel);
+                if(success) {
+                    Intent intent = new Intent(MainActivity.this, HelloActivity.class);
+                    startActivity(intent);
+                }
                 Toast.makeText(MainActivity.this, "Success: " + success , Toast.LENGTH_SHORT).show();
             }
         });
@@ -55,11 +64,13 @@ public class MainActivity extends AppCompatActivity {
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
 
-
-                Toast.makeText(MainActivity.this, "Cancel", Toast.LENGTH_SHORT).show();
             }
         });
+
+
 
 
 
